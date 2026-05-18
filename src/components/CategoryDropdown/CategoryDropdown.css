@@ -1,0 +1,19 @@
+.category-dropdown {
+  margin-bottom: 30px;
+}
+
+.category-dropdown select {
+  width: 250px;
+  padding: 12px 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  cursor: pointer;
+  background: #ffffff;
+  transition: 0.3s;
+}
+
+.category-dropdown select:focus {
+  border-color: #6c63ff;
+}
