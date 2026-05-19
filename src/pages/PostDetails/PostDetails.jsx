@@ -12,31 +12,23 @@ function PostDetails() {
   const [post, setPost] = useState(null)
   const [loading, setLoading] = useState(true)
 
-  // Fetch Single Post
-  const fetchPost = async () => {
-
-    try {
-
-      const data = await getSinglePost(id)
-      console.log(data)
-      if (data.success) {
-        setPost(data.data)
-      }
-    } catch (error) {
-
-      console.log('Post Error:', error)
-
-    } finally {
-
-      setLoading(false)
-    }
-  }
-
   // Page Load
   useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const data = await getSinglePost(id)
+        console.log(data)
+        if (data.success) {
+          setPost(data.data)
+        }
+      } catch (error) {
+        console.log('Post Error:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
 
     fetchPost()
-
   }, [id])
 
   // Loading

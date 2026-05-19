@@ -30,3 +30,9 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+.pagination .ellipsis {
+  padding: 10px 5px;
+  color: #666;
+  font-weight: bold;
+}

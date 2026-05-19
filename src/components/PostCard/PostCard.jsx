@@ -46,14 +46,6 @@ function PostCard({ post }) {
 
         <div className="footer">
           <span>
-            {
-              post.Created_at
-                ? new Date(post.Created_at).toLocaleDateString()
-                : 'No Date'
-            }
-          </span>
-
-          <span>
             #{post.PostId}
           </span>
 
