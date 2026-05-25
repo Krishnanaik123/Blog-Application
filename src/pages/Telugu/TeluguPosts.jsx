@@ -8,32 +8,28 @@ import Hero from '../../components/Hero/Hero'
 import Footer from '../../components/Footer/Footer'
 import CategoryDropdown from '../../components/CategoryDropdown/CategoryDropdown'
 import Pagination from '../../components/Pagination/Pagination'
-import { useSelector } from "react-redux";
-import './Home.css'
-
-function Home() {
+import "../Home/Home.css";
+function TeluguPosts() {
   const [posts, setPosts] = useState([])
   const [categories, setCategories] = useState([])
   const [selectedCategory, setSelectedCategory] = useState('')
   const [loading, setLoading] = useState(true)
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
+  
 
-const selectedLanguage = useSelector(
-  (state) => state.language.selectedLanguage
-);  
+const teluguPosts = posts.filter((post) => post.Title_Te && post.Content_Te
+)
 
   const filteredPosts =
   selectedCategory === ''
-    ? posts
-    : posts.filter(
+    ? teluguPosts
+    : teluguPosts.filter(
         (post) =>
           post.CategoryId === Number(selectedCategory)
       )
 
   
-console.log(filteredPosts[0]);
-
 
   // Initial Load  Fetch all posts and categories
   useEffect(() => {
@@ -64,8 +60,6 @@ console.log(filteredPosts[0]);
   }, [currentPage])
 
 
-console.log(filteredPosts[0]);
-
 
   return (
     <>
@@ -89,7 +83,7 @@ console.log(filteredPosts[0]);
           <>
             <div className="posts-grid">
               {filteredPosts.map((post) => (
-                <PostCard key={post.PostId} post={post} language={selectedLanguage} />
+                <PostCard key={post.PostId} post={post} language="te" />
               ))}
             </div>
             <Pagination
@@ -106,4 +100,4 @@ console.log(filteredPosts[0]);
 }
 
 
-export default Home
+export default TeluguPosts

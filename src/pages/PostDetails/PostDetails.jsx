@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams,useSearchParams } from 'react-router-dom'
 import Navbar from '../../components/Navbar/Navbar'
 import Footer from '../../components/Footer/Footer'
 import { getSinglePost } from '../../Services/postServices'
@@ -12,6 +12,9 @@ function PostDetails() {
   const [post, setPost] = useState(null)
   const [loading, setLoading] = useState(true)
 
+  const [searchParams] = useSearchParams();
+
+  const language = searchParams.get('lang');
   // Page Load
   useEffect(() => {
     const fetchPost = async () => {
@@ -99,10 +102,22 @@ function PostDetails() {
 
             </div>
             <h1 className="post-details-title">
-              {post.Title}
+              {
+                language === "hi"
+                  ? post.Title_Hi
+                  : language === "te"
+                  ? post.Title_Te
+                  : post.Title_En || post.Title
+              }
             </h1>
             <p className="post-details-content">
-              {post.Content}
+              {
+                language === "hi"
+                  ? post.Content_Hi
+                  : language === "te"
+                  ? post.Content_Te
+                  : post.Content_En || post.Content
+              }
             </p>
 
           </div>

@@ -1,8 +1,13 @@
 import { useState } from 'react'
 import { loginUser } from '../../Services/authService'
+import { useDispatch } from "react-redux";
+import { setUser } from "../../features/auth/authSlice";
+import { useNavigate } from 'react-router-dom';
 import './Login.css'
 
  function Login() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     username: '',
@@ -24,18 +29,18 @@ import './Login.css'
     try {
 
       const data = await loginUser(formData)
-      console.log(data)
        if (data.success) {
     alert('Login Successful')
+    dispatch(setUser(data))
+    console.log(data);
     setTimeout(() => {
-        window.location.href = '/'
+        navigate('/')
     }, 500)
 } else {
 
   alert(data.message)
 }
  } catch (error) {
-
       console.log(error)
       alert('Invalid Username or Password')
     }

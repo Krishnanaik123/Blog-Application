@@ -1,6 +1,8 @@
-import { useEffect, useState,  } from 'react'
+import { useEffect, useState } from 'react'
+
 import Navbar from '../../components/Navbar/Navbar'
 import Footer from '../../components/Footer/Footer'
+
 import { getTokenFromCookie } from '../../utils/auth'
 
 import './CreatePost.css'
@@ -8,87 +10,141 @@ import './CreatePost.css'
 function CreatePost() {
 
   const [formData, setFormData] = useState({
-    title: '',
-    content: '',
+
+    title_en: '',
+
+    content_en: '',
+
     category_id: '',
+
     AuthorId: '',
+
     image: null
-  })
+  });
 
-  const [categories, setCategories] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [categoriesLoading, setCategoriesLoading] = useState(true)
-  const [categoriesError, setCategoriesError] = useState(null)
+  const [categories, setCategories] = useState([]);
 
-  // Page Load
+  const [loading, setLoading] = useState(false);
+
+  const [categoriesLoading, setCategoriesLoading] = useState(true);
+
+  const [categoriesError, setCategoriesError] = useState(null);
+
+  // Load Categories
   useEffect(() => {
-    // Load Categories
+
     const loadCategories = async () => {
+
       try {
-        setCategoriesLoading(true)
-        setCategoriesError(null)
+
+        setCategoriesLoading(true);
+
+        setCategoriesError(null);
 
         const response = await fetch(
           'http://localhost:5000/api/getCategories'
-        )
+        );
 
         if (!response.ok) {
-          throw new Error(`API error: ${response.status}`)
+
+          throw new Error(
+            `API error: ${response.status}`
+          );
         }
 
-        const data = await response.json()
-        console.log(data)
+        const data = await response.json();
 
         if (data.success) {
-          setCategories(data.data)
+
+          setCategories(data.data);
+
         } else {
-          setCategoriesError(data.message || 'Failed to load categories')
+
+          setCategoriesError(
+            data.message ||
+            'Failed to load categories'
+          );
         }
 
       } catch (error) {
-        console.log(error)
-        setCategoriesError(error.message || 'Error loading categories')
+
+        console.log(error);
+
+        setCategoriesError(
+          error.message ||
+          'Error loading categories'
+        );
+
       } finally {
-        setCategoriesLoading(false)
+
+        setCategoriesLoading(false);
       }
-    }
+    };
 
-    loadCategories()
+    loadCategories();
 
-  }, [])
+  }, []);
 
   // Handle Inputs
   const handleChange = (e) => {
-    const { name, value, files } = e.target
+
+    const {
+      name,
+      value,
+      files
+    } = e.target;
+
     if (name === 'image') {
+
       setFormData({
+
         ...formData,
+
         image: files[0]
-      })
+      });
 
     } else {
 
       setFormData({
+
         ...formData,
+
         [name]: value
-      })
+      });
     }
-  }
+  };
 
   // Submit Form
   const handleSubmit = async (e) => {
-    e.preventDefault()
+
+    e.preventDefault();
+
     try {
 
-      setLoading(true)
+      setLoading(true);
 
-      // FormData
-      const form = new FormData()
+      const form = new FormData();
 
-      form.append('title', formData.title)
-      form.append('content', formData.content)
-      form.append('category_id', formData.category_id)
-      form.append('AuthorId', formData.AuthorId)
+      // ONLY English fields
+      form.append(
+        'title_en',
+        formData.title_en
+      );
+
+      form.append(
+        'content_en',
+        formData.content_en
+      );
+
+      form.append(
+        'category_id',
+        formData.category_id
+      );
+
+      form.append(
+        'AuthorId',
+        formData.AuthorId
+      );
 
       // Image
       if (formData.image) {
@@ -96,52 +152,88 @@ function CreatePost() {
         form.append(
           'image',
           formData.image
-        )
+        );
       }
 
       // Token
-      const token = getTokenFromCookie()
-      console.log("TOKEN =>", token)
+      const token =
+      getTokenFromCookie();
+
+      console.log(
+        "TOKEN =>",
+        token
+      );
 
       // API Call
       const response = await fetch(
+
         'http://localhost:5000/api/blogPosts',
+
+        
+
         {
           method: 'POST',
 
           headers: {
-            Authorization: `Bearer ${token}`
+            Authorization:
+            `Bearer ${token}`
           },
 
           credentials: 'include',
 
           body: form
         }
-      )
+      );
 
-      const data = await response.json()
-      console.log(data)
+      const data =
+      await response.json();
+
+      console.log(data);
+
       if (data.success) {
-        alert('Post Created Successfully')
-        window.location.href = '/'
+
+        alert(
+          'Post Created Successfully'
+        );
+
+        window.location.href = '/';
+
       } else {
-        alert(data.message)
+
+        alert(data.message);
       }
 
     } catch (error) {
-      console.log(error)
-      alert('Failed To Create Post')
+
+      console.log(
+      "CREATE POST ERROR =>",
+      error
+    )
+
+      console.log(error);
+
+      alert(
+        'Failed To Create Post'
+      );
+
     } finally {
-      setLoading(false)
+
+      setLoading(false);
     }
-  }
+  };
 
   return (
+
     <>
+
       <Navbar />
+
       <main className="container">
+
         <div className="form-wrapper">
+
           <div className="form-header">
+
             <h2>
               Create New Post
             </h2>
@@ -153,54 +245,71 @@ function CreatePost() {
           </div>
 
           <form onSubmit={handleSubmit}>
-            {categoriesError && (
-              <div className="error-message">
-                Error loading categories: {categoriesError}
-              </div>
-            )}
 
-            {categoriesLoading && (
-              <div className="loading-message">
-                Loading categories...
-              </div>
-            )}
+            {
+              categoriesError && (
 
+                <div className="error-message">
+
+                  Error loading categories:
+                  {categoriesError}
+
+                </div>
+              )
+            }
+
+            {
+              categoriesLoading && (
+
+                <div className="loading-message">
+
+                  Loading categories...
+
+                </div>
+              )
+            }
+
+            {/* English Title */}
             <div className="form-group">
 
               <label>
-                Title
+                English Title
               </label>
 
               <input
                 type="text"
-                name="title"
-                value={formData.title}
+                name="title_en"
+                value={formData.title_en}
                 onChange={handleChange}
-                placeholder="Enter post title..."
+                placeholder="Enter English title..."
                 required
               />
 
             </div>
 
+            {/* English Content */}
             <div className="form-group">
 
               <label>
-                Content
+                English Content
               </label>
 
               <textarea
                 rows="8"
-                name="content"
-                value={formData.content}
+                name="content_en"
+                value={formData.content_en}
                 onChange={handleChange}
-                placeholder="Write your story here..."
+                placeholder="Write English content..."
                 required
               />
 
             </div>
 
+            {/* Category + Author */}
             <div className="form-row">
+
               <div className="form-group">
+
                 <label>
                   Category
                 </label>
@@ -230,9 +339,11 @@ function CreatePost() {
                   }
 
                 </select>
+
               </div>
-            
-    <div className="form-group">
+
+              <div className="form-group">
+
                 <label>
                   Author ID
                 </label>
@@ -247,9 +358,12 @@ function CreatePost() {
                 />
 
               </div>
+
             </div>
 
+            {/* Image Upload */}
             <div className="form-group">
+
               <label>
                 Upload Image
               </label>
@@ -260,6 +374,7 @@ function CreatePost() {
                 accept="image/*"
                 onChange={handleChange}
               />
+
             </div>
 
             <button
@@ -275,13 +390,17 @@ function CreatePost() {
               }
 
             </button>
+
           </form>
+
         </div>
+
       </main>
+
       <Footer />
 
     </>
-  )
+  );
 }
 
-export default CreatePost
+export default CreatePost;

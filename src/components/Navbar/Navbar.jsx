@@ -1,25 +1,88 @@
 import './Navbar.css'
+
 import { Link } from 'react-router-dom'
-import { getTokenFromCookie } from '../../utils/auth'
-import { logoutUser } from '../../utils/logout'
+
+import { getTokenFromCookie }
+from '../../utils/auth'
+
+import { logoutUser }
+from '../../utils/logout'
+
+import { useSelector }
+from "react-redux";
+
+import { useTranslation }
+from "react-i18next";
+
 
 function Navbar() {
-  const token = getTokenFromCookie()
+
+  const { t, i18n } =
+    useTranslation();
+
+  const user = useSelector(
+    (state) => state.auth.user
+  );
+
+  const token =
+    getTokenFromCookie();
+
   return (
+
     <nav className="navbar">
+
       <div className="navbar-container">
+
         <h2 className="logo">
           📝 BlogApp
         </h2>
+
+        <h2>
+          {user?.username}
+        </h2>
+
         <div className="nav-links">
 
           <Link to="/">
-            Home
+            {t("home")}
           </Link>
 
+
+          <div className="language-container">
+
+            🌐
+
+            <select
+              className="language-dropdown"
+
+              onChange={(e) =>
+                i18n.changeLanguage(
+                  e.target.value
+                )
+              }
+            >
+
+              <option value="en">
+                English
+              </option>
+
+              <option value="te">
+                Telugu
+              </option>
+
+              <option value="hi">
+                Hindi
+              </option>
+
+            </select>
+
+          </div>
+
+
           <Link to="/create">
-            Create Post
+            {t("createPost")}
           </Link>
+
 
           {
             token ? (
@@ -28,7 +91,7 @@ function Navbar() {
                 className="logout-btn"
                 onClick={logoutUser}
               >
-                Logout
+                {t("logout")}
               </button>
 
             ) : (
@@ -36,11 +99,11 @@ function Navbar() {
               <>
 
                 <Link to="/login">
-                  Login
+                  {t("login")}
                 </Link>
 
                 <Link to="/signup">
-                  Signup
+                  {t("signup")}
                 </Link>
 
               </>
@@ -49,8 +112,11 @@ function Navbar() {
           }
 
         </div>
+
       </div>
+
     </nav>
+
   )
 }
 
