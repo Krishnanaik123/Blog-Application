@@ -3,76 +3,48 @@ import i18n from "i18next";
 import { initReactI18next }
 from "react-i18next";
 
-i18n.use(initReactI18next).init({
+import enTranslation
+from "./locales/en/translation.json";
 
-  resources: {
+import teTranslation
+from "./locales/te/translation.json";
 
-    en: {
+import hiTranslation
+from "./locales/hi/translation.json";
 
-      translation: {
 
-        home: "Home",
+i18n
 
-        createPost: "Create Post",
+  .use(initReactI18next)
 
-        login: "Login",
+  .init({
 
-        signup: "Signup",
+    resources: {
 
-        logout: "Logout",
+      en: {
+        translation: enTranslation,
+      },
 
+      te: {
+        translation: teTranslation,
+      },
+
+      hi: {
+        translation: hiTranslation,
       },
 
     },
 
-    te: {
+    lng: "en",
 
-      translation: {
+    fallbackLng: "en",
 
-        home: "హోమ్",
+    interpolation: {
 
-        createPost: "పోస్ట్ సృష్టించండి",
-
-        login: "లాగిన్",
-
-        signup: "సైన్ అప్",
-
-        logout: "లాగౌట్",
-
-      },
+      escapeValue: false,
 
     },
 
-    hi: {
-
-      translation: {
-
-        home: "होम",
-
-        createPost: "पोस्ट बनाएं",
-
-        login: "लॉगिन",
-
-        signup: "साइन अप",
-
-        logout: "लॉगआउट",
-
-      },
-
-    },
-
-  },
-
-  lng: "en",
-
-  fallbackLng: "en",
-
-  interpolation: {
-
-    escapeValue: false,
-
-  },
-
-});
+  });
 
 export default i18n;

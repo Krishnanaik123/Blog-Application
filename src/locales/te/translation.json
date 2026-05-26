@@ -1,0 +1,20 @@
+{
+  "home": "హోమ్",
+  "createPost": "పోస్ట్ సృష్టించు",
+  "login": "లాగిన్",
+  "signup": "సైన్ అప్",
+  "logout": "లాగౌట్",
+  "createNewPost": "కొత్త పోస్ట్ సృష్టించండి",
+  "shareStory": "మీ కథను ప్రపంచంతో పంచుకోండి",
+  "englishTitle": "ఇంగ్లీష్ శీర్షిక",
+  "enterEnglishTitle": "ఇంగ్లీష్ శీర్షిక నమోదు చేయండి...",
+  "englishContent": "ఇంగ్లీష్ కంటెంట్",
+  "writeEnglishContent": "ఇంగ్లీష్ కంటెంట్ రాయండి...",
+  "category": "వర్గం",
+  "selectCategory": "వర్గాన్ని ఎంచుకోండి",
+  "authorId": "రచయిత ఐడి",
+  "enterAuthorId": "రచయిత ఐడి నమోదు చేయండి",
+  "uploadImage": "చిత్రాన్ని అప్లోడ్ చేయండి",
+  "publishing": "ప్రచురిస్తోంది...",
+  "publishPost": "పోస్ట్ ప్రచురించండి"
+}

@@ -1,0 +1,183 @@
+[
+  {
+    "id": 1100,
+    "translations": {
+      "en": {
+        "title": "Nature View",
+        "description": "Beautiful nature scenery with greenery"
+      },
+      "te": {
+        "title": "ప్రకృతి దృశ్యం",
+        "description": "పచ్చదనంతో కూడిన అందమైన ప్రకృతి దృశ్యం"
+      },
+      "hi": {
+        "title": "प्राकृतिक दृश्य",
+        "description": "हरियाली के साथ सुंदर प्राकृतिक दृश्य"
+      }
+    }
+  },
+
+  {
+    "id": 1099,
+    "translations": {
+      "en": {
+        "title": "Historic Place",
+        "description": "A famous historical tourist destination"
+      },
+      "te": {
+        "title": "చారిత్రక స్థలం",
+        "description": "ప్రసిద్ధ చారిత్రక పర్యాటక స్థలం"
+      },
+      "hi": {
+        "title": "ऐतिहासिक स्थान",
+        "description": "एक प्रसिद्ध ऐतिहासिक पर्यटन स्थल"
+      }
+    }
+  },
+
+  {
+    "id": 1098,
+    "translations": {
+      "en": {
+        "title": "Mountain Area",
+        "description": "Mountains are perfect for travel lovers"
+      },
+      "te": {
+        "title": "పర్వత ప్రాంతం",
+        "description": "ప్రయాణ ప్రియులకు పర్వతాలు అద్భుతంగా ఉంటాయి"
+      },
+      "hi": {
+        "title": "पर्वतीय क्षेत्र",
+        "description": "पहाड़ यात्रा प्रेमियों के लिए बेहतरीन हैं"
+      }
+    }
+  },
+
+  {
+    "id": 1097,
+    "translations": {
+      "en": {
+        "title": "Hampi",
+        "description": "Hampi is a famous tourist place"
+      },
+      "te": {
+        "title": "హంపి",
+        "description": "హంపి ఒక ప్రసిద్ధ పర్యాటక స్థలం"
+      },
+      "hi": {
+        "title": "हम्पी",
+        "description": "हम्पी एक प्रसिद्ध पर्यटन स्थल है"
+      }
+    }
+  },
+
+  {
+    "id": 1092,
+    "translations": {
+      "en": {
+        "title": "Goa Beaches",
+        "description": "Goa beaches are popular for nightlife, seafood, and water activities."
+      },
+      "te": {
+        "title": "గోవా బీచ్‌లు",
+        "description": "గోవా బీచ్‌లు నైట్ లైఫ్, సముద్ర ఆహారం మరియు వాటర్ కార్యకలాపాలకు ప్రసిద్ధి చెందాయి."
+      },
+      "hi": {
+        "title": "गोवा समुद्र तट",
+        "description": "गोवा के समुद्र तट नाइटलाइफ़, समुद्री भोजन और जल गतिविधियों के लिए प्रसिद्ध हैं।"
+      }
+    }
+  },
+
+  {
+    "id": 1088,
+    "translations": {
+      "en": {
+        "title": "Charminar",
+        "description": "Charminar is a famous historical monument located in Hyderabad."
+      },
+      "te": {
+        "title": "చార్మినార్",
+        "description": "చార్మినార్ హైదరాబాద్‌లో ఉన్న ప్రసిద్ధ చారిత్రక కట్టడం."
+      },
+      "hi": {
+        "title": "चारमीनार",
+        "description": "चारमीनार हैदराबाद में स्थित एक प्रसिद्ध ऐतिहासिक स्मारक है।"
+      }
+    }
+  },
+
+  {
+    "id": 1087,
+    "translations": {
+      "en": {
+        "title": "Lepakshi",
+        "description": "The Lepakshi is a good place"
+      },
+      "te": {
+        "title": "లేపాక్షి",
+        "description": "లేపాక్షి ఒక మంచి ప్రదేశం"
+      },
+      "hi": {
+        "title": "लेपाक्षी",
+        "description": "लेपाक्षी एक अच्छा स्थान है"
+      }
+    }
+  },
+
+  {
+    "id": 1086,
+    "translations": {
+      "en": {
+        "title": "Vizag",
+        "description": "Vizag is a good city"
+      },
+      "te": {
+        "title": "విశాఖపట్నం",
+        "description": "విశాఖపట్నం ఒక మంచి నగరం"
+      },
+      "hi": {
+        "title": "विशाखापट्टनम",
+        "description": "विशाखापट्टनम एक अच्छा शहर है"
+      }
+    }
+  },
+
+  {
+    "id": 1082,
+    "translations": {
+      "en": {
+        "title": "My Village",
+        "description": "My village is very beautiful"
+      },
+      "te": {
+        "title": "నా గ్రామం",
+        "description": "నా గ్రామం చాలా అందంగా ఉంటుంది"
+      },
+      "hi": {
+        "title": "मेरा गांव",
+        "description": "मेरा गांव बहुत सुंदर है"
+      }
+    }
+  },
+
+  {
+    "id": 1069,
+    "translations": {
+      "en": {
+        "title": "Jabili",
+        "description": "The Jabili was famous writer"
+      },
+      "te": {
+        "title": "జాబిలి",
+        "description": "జాబిలి ఒక ప్రసిద్ధ రచయిత"
+      },
+      "hi": {
+        "title": "जाबिली",
+        "description": "जाबिली एक प्रसिद्ध लेखक थे"
+      }
+    }
+  }
+]
+
+

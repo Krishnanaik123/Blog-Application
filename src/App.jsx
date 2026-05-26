@@ -16,14 +16,6 @@ from './pages/Login/Login'
 import CreatePost
 from './pages/CreatePost/CreatePost'
 
-import English
-from './pages/English/EnglishPosts'
-
-import Hindi
-from './pages/Hindi/HindiPosts'
-
-import Telugu
-from './pages/Telugu/TeluguPosts'
 
 import ProtectedRoute
 from './routes/ProtectedRoute'
@@ -65,7 +57,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-
+{/* 
         <Route
           path="/english-posts"
           element={<English />}
@@ -79,7 +71,7 @@ function App() {
         <Route
           path="/telugu-posts"
           element={<Telugu />}
-        />
+        /> */}
 
       </Routes>
 

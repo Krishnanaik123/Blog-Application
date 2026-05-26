@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
+
 import { getPosts } from '../../Services/postServices'
 import { getCategories } from '../../Services/categoryService'
+
 import PostCard from '../../components/PostCard/PostCard'
 import Shimmer from '../../components/Shimmer/Shimmer'
 import Navbar from '../../components/Navbar/Navbar'
@@ -8,10 +10,15 @@ import Hero from '../../components/Hero/Hero'
 import Footer from '../../components/Footer/Footer'
 import CategoryDropdown from '../../components/CategoryDropdown/CategoryDropdown'
 import Pagination from '../../components/Pagination/Pagination'
-import { useSelector } from "react-redux";
+
+import { useTranslation } from "react-i18next";
+
 import './Home.css'
 
 function Home() {
+
+  const { i18n } = useTranslation();
+
   const [posts, setPosts] = useState([])
   const [categories, setCategories] = useState([])
   const [selectedCategory, setSelectedCategory] = useState('')
@@ -19,60 +26,76 @@ function Home() {
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
 
-const selectedLanguage = useSelector(
-  (state) => state.language.selectedLanguage
-);  
-
   const filteredPosts =
-  selectedCategory === ''
-    ? posts
-    : posts.filter(
-        (post) =>
-          post.CategoryId === Number(selectedCategory)
-      )
+    selectedCategory === ''
+      ? posts
+      : posts.filter(
+          (post) =>
+            post.CategoryId === Number(selectedCategory)
+        )
 
-  
-console.log(filteredPosts[0]);
-
-
-  // Initial Load  Fetch all posts and categories
+  // Initial Load Fetch all posts and categories
   useEffect(() => {
+
     const fetchData = async () => {
+
       try {
+
         // Fetch posts
         const postsData = await getPosts(currentPage)
+
         if (postsData.success) {
-              setPosts(postsData.data)
+
+          setPosts(postsData.data)
+
           setTotalPages(
-         postsData.pagination.totalPages
-  )
+            postsData.pagination.totalPages
+          )
+
         }
 
         // Fetch categories
         const categoriesData = await getCategories()
+
         if (categoriesData.success) {
+
           setCategories(categoriesData.data)
+
         }
+
       } catch (error) {
-        console.error('Error loading data:', error)
+
+        console.error(
+          'Error loading data:',
+          error
+        )
+
       } finally {
+
         setLoading(false)
+
       }
+
     }
 
     fetchData()
+
   }, [currentPage])
 
-
-console.log(filteredPosts[0]);
-
-
   return (
+
     <>
+
       <Navbar />
+
       <Hero />
+
       <div className="home-container">
-        <h1 className="main-title">All Blog Posts</h1>
+
+        <h1 className="main-title">
+          All Blog Posts
+        </h1>
+
         <CategoryDropdown
           categories={categories}
           selectedCategory={selectedCategory}
@@ -80,30 +103,53 @@ console.log(filteredPosts[0]);
         />
 
         {loading ? (
+
           <div className="posts-grid">
+
             {[...Array(6)].map((_, index) => (
+
               <Shimmer key={index} />
+
             ))}
+
           </div>
+
         ) : (
+
           <>
+
             <div className="posts-grid">
+
               {filteredPosts.map((post) => (
-                <PostCard key={post.PostId} post={post} language={selectedLanguage} />
+
+                <PostCard
+                  key={post.PostId}
+                  post={post}
+                  language={i18n.language}
+                />
+
               ))}
+
             </div>
+
             <Pagination
               currentPage={currentPage}
               totalPages={totalPages}
               setCurrentPage={setCurrentPage}
             />
-          </>
-        )}
-      </div>
-      <Footer />
-    </>
-  )
-}
 
+          </>
+
+        )}
+
+      </div>
+
+      <Footer />
+
+    </>
+
+  )
+
+}
 
 export default Home

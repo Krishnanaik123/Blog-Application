@@ -1,0 +1,20 @@
+{
+  "home": "होम",
+  "createPost": "पोस्ट बनाएं",
+  "login": "लॉगिन",
+  "signup": "साइन अप",
+  "logout": "लॉगआउट",
+  "createNewPost": "नई पोस्ट बनाएं",
+  "shareStory": "अपनी कहानी दुनिया के साथ साझा करें",
+  "englishTitle": "अंग्रेज़ी शीर्षक",
+  "enterEnglishTitle": "अंग्रेज़ी शीर्षक दर्ज करें...",
+  "englishContent": "अंग्रेज़ी सामग्री",
+  "writeEnglishContent": "अंग्रेज़ी सामग्री लिखें...",
+  "category": "श्रेणी",
+  "selectCategory": "श्रेणी चुनें",
+  "authorId": "लेखक आईडी",
+  "enterAuthorId": "लेखक आईडी दर्ज करें",
+  "uploadImage": "छवि अपलोड करें",
+  "publishing": "प्रकाशित हो रहा है...",
+  "publishPost": "पोस्ट प्रकाशित करें"
+}

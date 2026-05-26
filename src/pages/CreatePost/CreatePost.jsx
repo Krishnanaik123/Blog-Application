@@ -1,46 +1,33 @@
 import { useEffect, useState } from 'react'
-
 import Navbar from '../../components/Navbar/Navbar'
 import Footer from '../../components/Footer/Footer'
-
 import { getTokenFromCookie } from '../../utils/auth'
-
+import { useTranslation } from "react-i18next";
 import './CreatePost.css'
 
 function CreatePost() {
-
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
-
     title_en: '',
-
     content_en: '',
-
     category_id: '',
-
     AuthorId: '',
-
     image: null
+
   });
 
   const [categories, setCategories] = useState([]);
-
   const [loading, setLoading] = useState(false);
-
   const [categoriesLoading, setCategoriesLoading] = useState(true);
-
   const [categoriesError, setCategoriesError] = useState(null);
 
   // Load Categories
+
   useEffect(() => {
-
     const loadCategories = async () => {
-
       try {
-
         setCategoriesLoading(true);
-
         setCategoriesError(null);
-
         const response = await fetch(
           'http://localhost:5000/api/getCategories'
         );
@@ -50,14 +37,12 @@ function CreatePost() {
           throw new Error(
             `API error: ${response.status}`
           );
+
         }
 
         const data = await response.json();
-
         if (data.success) {
-
           setCategories(data.data);
-
         } else {
 
           setCategoriesError(
@@ -67,213 +52,138 @@ function CreatePost() {
         }
 
       } catch (error) {
-
         console.log(error);
-
         setCategoriesError(
           error.message ||
           'Error loading categories'
         );
 
       } finally {
-
         setCategoriesLoading(false);
       }
     };
-
     loadCategories();
-
   }, []);
 
+
   // Handle Inputs
+
   const handleChange = (e) => {
-
-    const {
-      name,
-      value,
-      files
-    } = e.target;
-
+    const { name, value, files } = e.target;
     if (name === 'image') {
-
-      setFormData({
-
-        ...formData,
-
+      setFormData({ ...formData,
         image: files[0]
       });
 
     } else {
 
-      setFormData({
-
-        ...formData,
-
-        [name]: value
-      });
+      setFormData({ ...formData,[name]: value });
     }
   };
 
+
   // Submit Form
+
   const handleSubmit = async (e) => {
-
     e.preventDefault();
-
     try {
-
       setLoading(true);
-
       const form = new FormData();
-
-      // ONLY English fields
-      form.append(
-        'title_en',
-        formData.title_en
-      );
-
-      form.append(
-        'content_en',
-        formData.content_en
-      );
-
-      form.append(
-        'category_id',
-        formData.category_id
-      );
-
-      form.append(
-        'AuthorId',
-        formData.AuthorId
-      );
+      form.append( 'title_en',formData.title_en );
+      form.append('content_en',formData.content_en );
+      form.append('category_id',formData.category_id );
+      form.append('AuthorId',formData.AuthorId);
 
       // Image
-      if (formData.image) {
 
-        form.append(
-          'image',
-          formData.image
-        );
+      if (formData.image) {
+        form.append('image',formData.image);
       }
 
       // Token
-      const token =
-      getTokenFromCookie();
 
-      console.log(
-        "TOKEN =>",
-        token
-      );
+      const token = getTokenFromCookie();
+
+      console.log( "TOKEN =>", token);
 
       // API Call
+
       const response = await fetch(
-
         'http://localhost:5000/api/blogPosts',
-
-        
-
         {
           method: 'POST',
-
           headers: {
             Authorization:
             `Bearer ${token}`
           },
-
           credentials: 'include',
-
           body: form
         }
       );
 
-      const data =
-      await response.json();
-
+      const data = await response.json();
       console.log(data);
-
       if (data.success) {
-
-        alert(
-          'Post Created Successfully'
-        );
-
+        alert( 'Post Created Successfully');
         window.location.href = '/';
-
       } else {
-
         alert(data.message);
       }
 
     } catch (error) {
 
-      console.log(
-      "CREATE POST ERROR =>",
-      error
-    )
-
-      console.log(error);
-
+      console.log( "CREATE POST ERROR =>", error);
       alert(
         'Failed To Create Post'
       );
 
     } finally {
-
       setLoading(false);
     }
   };
+
 
   return (
 
     <>
 
       <Navbar />
-
       <main className="container">
-
         <div className="form-wrapper">
-
           <div className="form-header">
-
             <h2>
-              Create New Post
+              {t("createNewPost")}
             </h2>
 
             <p>
-              Share your story with the world
+              {t("shareStory")}
             </p>
-
           </div>
-
           <form onSubmit={handleSubmit}>
 
             {
+
               categoriesError && (
-
                 <div className="error-message">
-
                   Error loading categories:
                   {categoriesError}
-
                 </div>
               )
             }
-
             {
               categoriesLoading && (
-
                 <div className="loading-message">
-
                   Loading categories...
-
                 </div>
               )
             }
 
-            {/* English Title */}
-            <div className="form-group">
 
+            {/* English Title */}
+
+            <div className="form-group">
               <label>
-                English Title
+                {t("englishTitle")}
               </label>
 
               <input
@@ -281,17 +191,18 @@ function CreatePost() {
                 name="title_en"
                 value={formData.title_en}
                 onChange={handleChange}
-                placeholder="Enter English title..."
+                placeholder={t("enterEnglishTitle")}
                 required
               />
 
             </div>
 
-            {/* English Content */}
-            <div className="form-group">
 
+            {/* English Content */}
+
+            <div className="form-group">
               <label>
-                English Content
+                {t("englishContent")}
               </label>
 
               <textarea
@@ -299,19 +210,19 @@ function CreatePost() {
                 name="content_en"
                 value={formData.content_en}
                 onChange={handleChange}
-                placeholder="Write English content..."
+                placeholder={t("writeEnglishContent")}
                 required
               />
 
             </div>
 
+
             {/* Category + Author */}
+
             <div className="form-row">
-
               <div className="form-group">
-
                 <label>
-                  Category
+                  {t("category")}
                 </label>
 
                 <select
@@ -322,30 +233,29 @@ function CreatePost() {
                 >
 
                   <option value="">
-                    Select Category
+                    {t("selectCategory")}
                   </option>
 
                   {
+
                     categories.map((category) => (
 
                       <option
                         key={category.CategoryId}
                         value={category.CategoryId}
                       >
+
                         {category.CategoryName}
                       </option>
-
                     ))
+
                   }
 
                 </select>
-
               </div>
-
               <div className="form-group">
-
                 <label>
-                  Author ID
+                  {t("authorId")}
                 </label>
 
                 <input
@@ -353,7 +263,7 @@ function CreatePost() {
                   name="AuthorId"
                   value={formData.AuthorId}
                   onChange={handleChange}
-                  placeholder="Enter Author ID"
+                  placeholder={t("enterAuthorId")}
                   required
                 />
 
@@ -361,11 +271,12 @@ function CreatePost() {
 
             </div>
 
-            {/* Image Upload */}
-            <div className="form-group">
 
+            {/* Image Upload */}
+
+            <div className="form-group">
               <label>
-                Upload Image
+                {t("uploadImage")}
               </label>
 
               <input
@@ -374,8 +285,10 @@ function CreatePost() {
                 accept="image/*"
                 onChange={handleChange}
               />
-
             </div>
+
+
+            {/* Submit Button */}
 
             <button
               type="submit"
@@ -384,23 +297,18 @@ function CreatePost() {
             >
 
               {
+
                 loading
-                  ? 'Publishing...'
-                  : 'Publish Post'
+                  ? t("publishing")
+                  : t("publishPost")
               }
 
             </button>
-
           </form>
-
         </div>
-
       </main>
-
       <Footer />
-
     </>
   );
 }
-
 export default CreatePost;

@@ -1,0 +1,20 @@
+{
+  "home": "Home",
+  "createPost": "Create Post",
+  "login": "Login",
+  "signup": "Signup",
+  "logout": "Logout",
+  "createNewPost": "Create New Post",
+  "shareStory": "Share your story with the world",
+  "englishTitle": "English Title",
+  "enterEnglishTitle": "Enter English title...",
+  "englishContent": "English Content",
+  "writeEnglishContent": "Write English content...",
+  "category": "Category",
+  "selectCategory": "Select Category",
+  "authorId": "Author ID",
+  "enterAuthorId": "Enter Author ID",
+  "uploadImage": "Upload Image",
+  "publishing": "Publishing...",
+  "publishPost": "Publish Post"
+}
