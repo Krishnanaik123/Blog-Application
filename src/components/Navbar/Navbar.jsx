@@ -57,7 +57,6 @@ function Navbar() {
           📝 BlogApp
         </h2>
 
-
         <h2>
           {user?.username}
         </h2>

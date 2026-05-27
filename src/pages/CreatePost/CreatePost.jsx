@@ -21,8 +21,6 @@ function CreatePost() {
   const [categoriesLoading, setCategoriesLoading] = useState(true);
   const [categoriesError, setCategoriesError] = useState(null);
 
-  // Load Categories
-
   useEffect(() => {
     const loadCategories = async () => {
       try {
@@ -33,7 +31,6 @@ function CreatePost() {
         );
 
         if (!response.ok) {
-
           throw new Error(
             `API error: ${response.status}`
           );
@@ -65,9 +62,6 @@ function CreatePost() {
     loadCategories();
   }, []);
 
-
-  // Handle Inputs
-
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (name === 'image') {
@@ -81,9 +75,6 @@ function CreatePost() {
     }
   };
 
-
-  // Submit Form
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -94,20 +85,13 @@ function CreatePost() {
       form.append('category_id',formData.category_id );
       form.append('AuthorId',formData.AuthorId);
 
-      // Image
-
       if (formData.image) {
         form.append('image',formData.image);
       }
 
-      // Token
-
       const token = getTokenFromCookie();
-
       console.log( "TOKEN =>", token);
-
       // API Call
-
       const response = await fetch(
         'http://localhost:5000/api/blogPosts',
         {
@@ -146,7 +130,6 @@ function CreatePost() {
   return (
 
     <>
-
       <Navbar />
       <main className="container">
         <div className="form-wrapper">
