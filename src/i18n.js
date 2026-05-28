@@ -4,7 +4,6 @@ import enTranslation from "./locales/en/translation.json";
 import teTranslation from "./locales/te/translation.json";
 import hiTranslation from "./locales/hi/translation.json";
 
-
 i18n
   .use(initReactI18next)
   .init({resources: {en: {translation: enTranslation,},te: {translation: teTranslation,},hi: {translation: hiTranslation,},
@@ -13,4 +12,4 @@ i18n
     lng: "en", fallbackLng: "en",interpolation: { escapeValue: false,},
   });
 
-export default i18n;
+export default i18n;   

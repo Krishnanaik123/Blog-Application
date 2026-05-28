@@ -56,7 +56,7 @@ function PostCard({ post,language }) {
         {
           post.ImageUrl ? (
             <img
-              src={`http://localhost:5000/uploads/${post.ImageUrl}`}
+              src={`https://blog-application-backend-eight.vercel.app/uploads/${post.ImageUrl}`}
               alt={title}
             />
 
@@ -173,7 +173,7 @@ export default PostCard;
 //           post.ImageUrl ? (
 
 //             <img
-//               src={`http://localhost:5000/uploads/${post.ImageUrl}`}
+//               src={`https://blog-application-backend-eight.vercel.app/uploads/${post.ImageUrl}`}
 //               alt={title}
 //             />
 
