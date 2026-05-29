@@ -1,19 +1,37 @@
 export const getTokenFromCookie = () => {
- const name = 'token='
- const decodedCookie =
-    decodeURIComponent(document.cookie)
+  return localStorage.getItem("token");
+};
 
-  const cookies =
-    decodedCookie.split(';')
+export const removeToken = () => {
+  localStorage.removeItem("token");
+};
 
-  for (let cookie of cookies) {
-    while (cookie.charAt(0) === ' ') {
-      cookie = cookie.substring(1)
-    }
+export const isAuthenticated = () => {
+  const token = localStorage.getItem("token");
+  return !!token;
+};
 
-    if (cookie.indexOf(name) === 0) {
-      return cookie.substring(name.length)
-    }
-  }
-  return null
-}
+
+
+
+
+
+// export const getTokenFromCookie = () => {
+//  const name = 'token='
+//  const decodedCookie =
+//     decodeURIComponent(document.cookie)
+
+//   const cookies =
+//     decodedCookie.split(';')
+
+//   for (let cookie of cookies) {
+//     while (cookie.charAt(0) === ' ') {
+//       cookie = cookie.substring(1)
+//     }
+
+//     if (cookie.indexOf(name) === 0) {
+//       return cookie.substring(name.length)
+//     }
+//   }
+//   return null
+// }

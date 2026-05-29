@@ -5,57 +5,78 @@ import { setUser } from "../../features/auth/authSlice";
 import { useNavigate } from 'react-router-dom';
 import './Login.css'
 
- function Login() {
+function Login() {
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     username: '',
     password: ''
-  })
+  });
 
   // Handle Input
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
-
-    })
-  }
+    });
+  };
 
   // Handle Submit
   const handleSubmit = async (e) => {
-    e.preventDefault()
+
+    e.preventDefault();
+
     try {
 
-      const data = await loginUser(formData)
-       if (data.success) {
-    alert('Login Successful')
-    dispatch(setUser(data))
-    console.log(data);
-    setTimeout(() => {
-        navigate('/')
-    }, 500)
-} else {
+      const data = await loginUser(formData);
 
-  alert(data.message)
-}
- } catch (error) {
-      console.log(error)
-      alert('Invalid Username or Password')
+      console.log("Login Response:", data);
+
+      if (data.success) {
+
+        // Store JWT Token
+        localStorage.setItem("token", data.token);
+
+        alert('Login Successful');
+
+        dispatch(setUser(data));
+
+        setTimeout(() => {
+          navigate('/');
+        }, 500);
+
+      } else {
+
+        alert(data.message);
+
+      }
+
+    } catch (error) {
+
+      console.log(error);
+
+      alert(
+        error.response?.data?.message ||
+        'Invalid Username or Password'
+      );
     }
-  }
+  };
 
   return (
-
     <div className="container">
+
       <div className="form-card">
-        <h1>  Login </h1>
+
+        <h1>Login</h1>
+
         <form onSubmit={handleSubmit}>
 
           {/* Username */}
-    <div className="input-group">
-            <label> UserName </label>
+          <div className="input-group">
+
+            <label>UserName</label>
 
             <input
               type="text"
@@ -64,10 +85,12 @@ import './Login.css'
               onChange={handleChange}
               required
             />
-     </div>
+
+          </div>
 
           {/* Password */}
-        <div className="input-group">
+          <div className="input-group">
+
             <label>Password</label>
 
             <input
@@ -77,6 +100,7 @@ import './Login.css'
               onChange={handleChange}
               required
             />
+
           </div>
 
           {/* Button */}
@@ -86,16 +110,24 @@ import './Login.css'
           >
             Login
           </button>
+
         </form>
+
         <p className="auth-switch">
-                Don't have an account?
-            <span
-                 onClick={() => window.location.href = '/signup'}
-             >Signup</span>
-         </p>
+          Don't have an account?
+
+          <span
+            onClick={() => window.location.href = '/signup'}
+          >
+            Signup
+          </span>
+
+        </p>
+
       </div>
+
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;
