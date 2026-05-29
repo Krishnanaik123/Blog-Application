@@ -95,7 +95,11 @@ function PostDetails() {
             post.ImageUrl && (
               <div className="post-details-image">
                 <img
-                  src={`https://blog-application-backend-eight.vercel.app/uploads/${post.ImageUrl}`}
+                   src={
+    post.ImageUrl?.startsWith("http")
+      ? post.ImageUrl
+      : `https://blog-application-backend-eight.vercel.app/uploads/${post.ImageUrl}`
+  }
                   alt={post.Title}
                 />
               </div>
