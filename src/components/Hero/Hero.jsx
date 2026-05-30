@@ -1,20 +1,16 @@
-import './Hero.css'
+import './Hero.css';
 
 function Hero() {
-
   return (
     <section className="hero">
       <div className="hero-content">
-
-        <h1>
-          Welcome to BlogApp
-        </h1>
+        <h1>Welcome to BlogApp</h1>
         <p>
           Discover amazing stories, ideas and perspectives
         </p>
       </div>
-  </section>
-  )
+    </section>
+  );
 }
 
-export default Hero
+export default Hero;
