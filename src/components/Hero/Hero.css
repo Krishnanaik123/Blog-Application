@@ -1,13 +1,84 @@
 .hero {
+  width: 100%;
+  background: linear-gradient(135deg, #7c3aed 0%, #635bff 50%, #4f46e5 100%) !important;
+  padding: 80px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  border-radius: 0px !important;
+  border: none !important;
+  box-shadow: inset 0 -10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.hero-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-title {
+  font-size: 64px !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  margin: 0 0 16px 0 !important;
+  letter-spacing: -1.5px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 500 !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  margin: 0 !important;
+  max-width: 650px !important;
+  line-height: 1.5 !important;
+  letter-spacing: -0.2px !important;
+}
+
+@media screen and (max-width: 968px) {
+  .hero {
+    padding: 60px 24px;
+  }
+  .hero-title {
+    font-size: 44px !important;
+    letter-spacing: -0.8px !important;
+  }
+  .hero-subtitle {
+    font-size: 16px !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero {
+    padding: 48px 16px;
+  }
+  .hero-title {
+    font-size: 32px !important;
+    letter-spacing: -0.5px !important;
+  }
+  .hero-subtitle {
+    font-size: 14px !important;
+  }
+}
+
+
+
+/* .hero {
   background: linear-gradient(135deg, #6c63ff, #8b5cf6);
-  /* హైట్ 60vh నుండి 35vh కి తగ్గించాను, దీనివల్ల సెక్షన్ చిన్నగా మారుతుంది */
   min-height: 35vh; 
   min-height: 35dvh; 
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  /* ప్యాడింగ్ కూడా తగ్గించాను */
   padding: clamp(30px, 5vw, 50px) 20px; 
   color: white;
   border-radius: 0 0 20px 20px;
@@ -21,19 +92,16 @@
 }
 
 .hero-content h1 {
-  /* టెక్స్ట్ సైజ్ కొంచెం తగ్గించాను (గరిష్టంగా 3.5rem కి) */
   font-size: clamp(1.8rem, 5vw + 1rem, 3.5rem);
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 15px;
   word-break: break-word;
   overflow-wrap: break-word;
-  /* టెక్స్ట్ కలర్ వైట్ అయితే మీ బ్యాక్‌గ్రౌండ్‌కి చాలా బాగా సెట్ అవుతుంది */
   color: #ffffff; 
 }
 
 .hero-content p {
-  /* పారాగ్రాఫ్ సైజ్ కూడా కొంచెం తగ్గించాను */
   font-size: clamp(0.95rem, 1.5vw + 0.5rem, 1.2rem);
   line-height: 1.5;
   opacity: 0.9;
@@ -41,9 +109,6 @@
   margin: 0 auto;
 }
 
-/* --- MEDIA QUERIES --- */
-
-/* టాబ్లెట్ మరియు ల్యాప్‌టాప్ చిన్న స్క్రీన్స్ */
 @media (max-width: 768px) {
   .hero {
     min-height: 30dvh;
@@ -51,7 +116,6 @@
   }
 }
 
-/* మొబైల్ ఫోన్లు */
 @media (max-width: 480px) {
   .hero {
     min-height: 25dvh;
@@ -62,7 +126,6 @@
   }
 }
 
-/* చాలా చిన్న ఫోన్లు */
 @media (max-width: 320px) {
   .hero-content h1 {
     font-size: 1.6rem;
@@ -71,3 +134,10 @@
     font-size: 0.9rem;
   }
 }
+
+.hero-container {
+  max-width: 1440px; 
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 0px; 
+} */

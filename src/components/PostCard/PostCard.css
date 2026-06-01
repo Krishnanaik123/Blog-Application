@@ -1,4 +1,109 @@
 .post-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  min-height: 440px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.post-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  border-color: rgba(99, 91, 255, 0.3);
+  box-shadow: 0 20px 40px rgba(99, 91, 255, 0.12);
+}
+
+.post-image {
+  overflow: hidden; /* Fixes zoom spillover */
+  background: #111827;
+}
+
+.post-image img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.post-card:hover .post-image img {
+  transform: scale(1.06); /* Clean parallax zoom effect */
+}
+
+.no-image {
+  height: 230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+  opacity: 0.8;
+}
+
+.post-body {
+  padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.category {
+  color: #a5b4fc;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.author {
+  color: #9ca3af;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+  margin-bottom: 12px;
+  transition: color 0.2s ease;
+}
+
+.post-card:hover .title {
+  color: #a5b4fc;
+}
+
+.content {
+  color: #9ca3af;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Clips long paragraphs nicely */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #6b7280;
+  font-size: 13px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 16px;
+  margin-top: auto; /* Pushes footer to absolute bottom */
+}
+
+
+
+/* .post-card {
   background: #ffffff;
   border-radius: 12px;
   overflow: hidden;
@@ -69,4 +174,4 @@
   font-size: 14px;
   border-top: 1px solid #eee;
   padding-top: 10px;
-}
+} */
