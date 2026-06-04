@@ -98,7 +98,8 @@ function PostDetails() {
                    src={
     post.ImageUrl?.startsWith("http")
       ? post.ImageUrl
-      : `https://blog-application-backend-eight.vercel.app/uploads/${post.ImageUrl}`
+      // : `http://localhost:5000/uploads/${post.ImageUrl}`
+        : `https://blog-application-backend-eight.vercel.app/uploads/${post.ImageUrl}`
   }
                   alt={post.Title}
                 />

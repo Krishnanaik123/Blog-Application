@@ -27,7 +27,8 @@ function CreatePost() {
         setCategoriesLoading(true);
         setCategoriesError(null);
         const response = await fetch(
-          'https://blog-application-backend-eight.vercel.app/api/getCategories'
+          // 'http://localhost:5000/api/getCategories'
+              'https://blog-application-backend-eight.vercel.app/api/getCategories'
         );
 
         if (!response.ok) {
@@ -93,7 +94,7 @@ function CreatePost() {
       console.log( "TOKEN =>", token);
       // API Call
       const response = await fetch(
-        'https://blog-application-backend-eight.vercel.app/api/blogPosts',
+        'http://localhost:5000/api/blogPosts',
         {
           method: 'POST',
           headers: {
