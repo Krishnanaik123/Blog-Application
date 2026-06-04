@@ -94,7 +94,8 @@ function CreatePost() {
       console.log( "TOKEN =>", token);
       // API Call
       const response = await fetch(
-        'http://localhost:5000/api/blogPosts',
+        // 'http://localhost:5000/api/blogPosts',
+        'https://blog-application-backend-eight.vercel.app/api/blogPosts',
         {
           method: 'POST',
           headers: {
