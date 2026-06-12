@@ -6,7 +6,9 @@ import { logoutUser } from '../../utils/logout'
 import { useSelector } from "react-redux"
 import { useTranslation } from "react-i18next"
 
-function Navbar({ categories = [], selectedCategory = '', setSelectedCategory }) {
+
+function Navbar({ categories = [], selectedCategory = '', setSelectedCategory, searchText = '',
+  setSearchText }) {
   const { t, i18n } = useTranslation();
   const user = useSelector((state) => state.auth.user);
   const token = getTokenFromCookie();
@@ -85,6 +87,19 @@ function Navbar({ categories = [], selectedCategory = '', setSelectedCategory })
               </select>
             </div>
           )}
+              <input
+                    type="text"
+                    placeholder=" Posts..."
+                    value={searchText}
+                    onChange={async (e) => {
+                      setSearchText(e.target.value)
+                      if (e.target.value.trim()) {
+                      
+                        // results parent component ki pass cheyyali
+                      }
+                    }}
+                    className="search-box"
+                  />
 
           {/* Language Selector */}
           <div className="language-wrapper">

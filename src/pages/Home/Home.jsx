@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getPosts } from '../../Services/postServices'
+import { getPosts, searchPosts } from '../../Services/postServices'
 import { getCategories } from '../../Services/categoryService'
 import PostCard from '../../components/PostCard/PostCard'
 import Shimmer from '../../components/Shimmer/Shimmer'
@@ -10,6 +10,7 @@ import Pagination from '../../components/Pagination/Pagination'
 import { useTranslation } from "react-i18next";
 import './Home.css'
 
+
 function Home() {
   const { i18n } = useTranslation();
   const [posts, setPosts] = useState([])
@@ -18,25 +19,56 @@ function Home() {
   const [loading, setLoading] = useState(true)
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
+  const [searchText, setSearchText] = useState('');
 
-  const filteredPosts =
-    selectedCategory === ''
-      ? posts
-      : posts.filter((post) => post.CategoryId === Number(selectedCategory))
-
-  // Initial Load Fetch all posts and categories
+  // Categories — once fetch cheyyali
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchCategories = async () => {
       try {
-        const postsData = await getPosts(currentPage)
-        if (postsData.success) {
-          setPosts(postsData.data)
-          setTotalPages(postsData.pagination.totalPages)
-        }
-
         const categoriesData = await getCategories()
         if (categoriesData.success) {
           setCategories(categoriesData.data)
+        }
+      } catch (error) {
+        console.error('Error loading categories:', error)
+      }
+    }
+    fetchCategories()
+  }, [])
+
+  // ✅ Search useEffect — searchText change aite only
+  useEffect(() => {
+    if (!searchText.trim()) return;
+
+    const timer = setTimeout(async () => {
+      try {
+        setLoading(true)
+        const searchData = await searchPosts(searchText, 1)
+        if (searchData.success) {
+          setPosts(searchData.data)
+          setTotalPages(searchData.pagination?.totalPages || 1)
+          setCurrentPage(1)
+        }
+      } catch (error) {
+        console.error('Error searching:', error)
+      } finally {
+        setLoading(false)
+      }
+    }, 500) 
+
+    return () => clearTimeout(timer)
+
+  }, [searchText]) 
+  useEffect(() => {
+    if (searchText.trim()) return; 
+
+    const fetchData = async () => {
+      try {
+        setLoading(true)
+        const postsData = await getPosts(currentPage, selectedCategory)
+        if (postsData.success) {
+          setPosts(postsData.data)
+          setTotalPages(postsData.pagination.totalPages)
         }
       } catch (error) {
         console.error('Error loading data:', error)
@@ -44,16 +76,18 @@ function Home() {
         setLoading(false)
       }
     }
-    fetchData()
-  }, [currentPage])
 
+    fetchData()
+
+  }, [currentPage, selectedCategory]) 
   return (
     <div className="home-page-root">
-      {/* Navbar receives state controls to render the category dropdown inside it */}
-      <Navbar 
-        categories={categories} 
-        selectedCategory={selectedCategory} 
-        setSelectedCategory={setSelectedCategory} 
+      <Navbar
+        categories={categories}
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
+        searchText={searchText}
+        setSearchText={setSearchText}
       />
 
       <Hero />
@@ -70,7 +104,7 @@ function Home() {
         ) : (
           <>
             <div className="posts-grid">
-              {filteredPosts.map((post) => (
+              {posts.map((post) => (
                 <PostCard
                   key={post.PostId}
                   post={post}

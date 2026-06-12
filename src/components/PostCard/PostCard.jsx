@@ -77,13 +77,13 @@ function PostCard({ post,language }) {
 
       {/* Body */}
       <div className="post-body">
-        <p className="category">
-          CategoryId:{post.CategoryId}
-        </p>
+        {/* <p className="category"> */}
+          {/* CategoryId:{post.CategoryId} */}
+        {/* </p> */}
 
-        <p className="author">
-          AuthorId:{post.AuthorId}
-        </p>
+        {/* <p className="author"> */}
+          {/* AuthorId:{post.AuthorId} */}
+        {/* </p> */}
 
 
         {/* Title */}
@@ -96,11 +96,11 @@ function PostCard({ post,language }) {
           {content}
         </p>
         {/* Footer */}
-        <div className="footer">
+        {/* <div className="footer"> */}
           <span>
-            #{post.PostId}
+            {/* #{post.PostId} */}
           </span>
-        </div>
+        {/* </div> */}
       </div>
     </div>
   );
@@ -120,116 +120,3 @@ export default PostCard;
 
 
 
-// import './PostCard.css';
-
-// import { useNavigate } from 'react-router-dom';
-
-// import translationsData from '../../data/translations.json';
-
-// function PostCard({ post, language }) {
-
-//   console.log(language);
-
-//   const navigate = useNavigate();
-
-//   console.log(post.PostId)
-
-//   // Find translated post
-//   const translatedPost = translationsData.find(
-//     (item) => item.id === post.PostId
-//   );
-
-//   console.log(language);
-
-// console.log(translatedPost);
-//   // Dynamic Title
-//   const title =
-
-//     translatedPost?.translations?.[language]?.title ||
-
-//     post.Title_En ||
-
-//     post.Title;
-
-//   // Dynamic Content
-//   const content =
-
-//     translatedPost?.translations?.[language]?.description ||
-
-//     post.Content_En ||
-
-//     post.Content;
-
-//   return (
-
-//     <div
-//       className="post-card"
-
-//       onClick={() =>
-//         navigate(
-//           `/post/${post.PostId}?lang=${language}`
-//         )
-//       }
-//     >
-
-//       {/* Image Section */}
-//       <div className="post-image">
-
-//         {
-//           post.ImageUrl ? (
-
-//             <img
-//               src={`http://localhost:5000/uploads/${post.ImageUrl}`}
-//               alt={title}
-//             />
-
-//           ) : (
-
-//             <div className="no-image">
-//               📝
-//             </div>
-
-//           )
-//         }
-
-//       </div>
-
-//       {/* Body */}
-//       <div className="post-body">
-
-//         <p className="category">
-//           CategoryId:
-//           {post.CategoryId}
-//         </p>
-
-//         <p className="author">
-//           AuthorId:
-//           {post.AuthorId}
-//         </p>
-
-//         {/* Title */}
-//         <h2 className="title">
-//           {title}
-//         </h2>
-
-//         {/* Content */}
-//         <p className="content">
-//           {content}
-//         </p>
-
-//         {/* Footer */}
-//         <div className="footer">
-
-//           <span>
-//             #{post.PostId}
-//           </span>
-
-//         </div>
-
-//       </div>
-
-//     </div>
-//   );
-// }
-
-// export default PostCard;
