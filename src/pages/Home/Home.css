@@ -3,7 +3,7 @@
   margin: auto;
   padding: 40px 20px;
   width: 95%;
-
+ margin-top: 400px;
 }
 
 .main-title {
@@ -11,6 +11,17 @@
   text-align: center;
   margin-bottom: 40px;
   color: #222;
+}
+
+@media screen and (max-width: 968px) {
+  .hero {
+    /* padding: 60px 24px; */
+    position: fixed;
+  top: 70px; /* navbar ke neeche */
+  left: 0;
+  width: 100%;
+  z-index: 999
+  }
 }
 
 .posts-grid {
@@ -22,23 +33,9 @@
 .home-page-root {
   display: flex;
   flex-direction: column;
-  padding-top: 80px;
+  padding-top: 0px;
 }
 
-.hero {
-  margin-top: 70px;
-}
-
-/* Navbar fixed top pe */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width:100%;
-  z-index:1000;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  right: 0;
-}
 
 /* Content neeche se start ho */
 .home-container {
