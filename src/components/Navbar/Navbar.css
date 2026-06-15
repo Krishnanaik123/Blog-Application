@@ -3,7 +3,8 @@
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   padding: 14px 40px;
-  position: sticky;
+  position: fixed;
+  width:100%;
   top: 0;
   z-index: 1000;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -189,6 +190,7 @@
   .navbar-container {
     flex-direction: column;
     gap: 16px;
+  
   }
   .nav-actions-group {
     width: 100%;
@@ -243,7 +245,7 @@ iframe.goog-te-banner-frame {
   color: #ffffff !important;
 }
 
-.lang-dropdown select:focus,
+.lang-dropdown select:focus,CLEAR
 .navbar select:focus {
   outline: none !important;
   box-shadow: 0 0 0 2px #635bff !important;
