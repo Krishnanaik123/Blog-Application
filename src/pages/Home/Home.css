@@ -3,6 +3,7 @@
   margin: auto;
   padding: 40px 20px;
   width: 95%;
+  
 
 }
 
@@ -16,7 +17,7 @@
 @media screen and (max-width: 968px) {
   .hero {
     /* padding: 60px 24px; */
-    margin-top: 220px;
+    margin-top: 215px;
   }
 }
 
