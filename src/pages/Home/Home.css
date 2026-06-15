@@ -22,6 +22,7 @@
 .home-page-root {
   display: flex;
   flex-direction: column;
+  padding-top: 80px;
 }
 
 /* Navbar fixed top pe */
@@ -29,13 +30,19 @@
   position: fixed;
   top: 0;
   left: 0;
+  width:100%;
+  z-index:1000;
+  background-color: white; 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   right: 0;
-  z-index: 1000;
 }
 
 /* Content neeche se start ho */
 .home-container {
-  margin-top: 80px; /* navbar height ke barabar */
+  max-width: 1200px;
+  margin: 0 auto; /* Center alignment */
+  padding: 40px 20px;
+  width: 95%;
 }
 
 @media (max-width: 768px) {
