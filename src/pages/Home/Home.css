@@ -19,6 +19,25 @@
   gap: 25px;
 }
 
+.home-page-root {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar fixed top pe */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+/* Content neeche se start ho */
+.home-container {
+  margin-top: 80px; /* navbar height ke barabar */
+}
+
 @media (max-width: 768px) {
   .posts-grid {
     grid-template-columns: 1fr;
