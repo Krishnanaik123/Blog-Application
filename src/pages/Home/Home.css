@@ -3,7 +3,7 @@
   margin: auto;
   padding: 40px 20px;
   width: 95%;
- margin-top: 400px;
+
 }
 
 .main-title {
@@ -16,11 +16,7 @@
 @media screen and (max-width: 968px) {
   .hero {
     /* padding: 60px 24px; */
-    position: fixed;
-  top: 70px; /* navbar ke neeche */
-  left: 0;
-  width: 100%;
-  z-index: 999
+    margin-top: 220px;
   }
 }
 
