@@ -51,6 +51,22 @@ function Home() {
   return () => window.removeEventListener('scroll', handleScroll)
 }, [loading, currentPage, totalPages])
 
+
+useEffect(() => {
+  const updateHeroMargin = () => {
+    const navbar = document.querySelector('.navbar');
+    const hero = document.querySelector('.hero');
+    if (navbar && hero) {
+      const navHeight = navbar.offsetHeight;
+      hero.style.marginTop = navHeight + 'px';
+    }
+  }
+
+  updateHeroMargin(); // pehle ek baar run karo
+  window.addEventListener('resize', updateHeroMargin); // resize pe bhi run karo
+  return () => window.removeEventListener('resize', updateHeroMargin);
+}, [])
+
   //  Search useEffect — searchText change aite only
   useEffect(() => {
     if (!searchText.trim()) return;

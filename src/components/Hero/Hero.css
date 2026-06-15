@@ -15,7 +15,9 @@
 }
 
 .home-page-root {
-  padding-top:0px;
+   display: flex;
+  flex-direction: column;
+  padding-top:0px; 
 }
 
 .hero-container {
@@ -51,7 +53,6 @@
 @media screen and (max-width: 968px) {
   .hero {
     padding: 60px 24px;
-    margin-top: 190px;
   }
   .hero-title {
     font-size: 44px !important;
@@ -65,6 +66,7 @@
 @media screen and (max-width: 480px) {
   .hero {
     padding: 48px 16px;
+    padding-top: 50px;
   }
   .hero-title {
     font-size: 32px !important;
