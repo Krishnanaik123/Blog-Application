@@ -36,7 +36,22 @@ function Home() {
     fetchCategories()
   }, [])
 
-  // ✅ Search useEffect — searchText change aite only
+  useEffect(() => {
+  const handleScroll = () => {
+    if (
+      window.innerHeight + window.scrollY >= document.body.offsetHeight - 200
+      && !loading
+      && currentPage < totalPages
+    ) {
+      setCurrentPage(prev => prev + 1)
+    }
+  }
+
+  window.addEventListener('scroll', handleScroll)
+  return () => window.removeEventListener('scroll', handleScroll)
+}, [loading, currentPage, totalPages])
+
+  //  Search useEffect — searchText change aite only
   useEffect(() => {
     if (!searchText.trim()) return;
 
@@ -67,7 +82,7 @@ function Home() {
         setLoading(true)
         const postsData = await getPosts(currentPage, selectedCategory)
         if (postsData.success) {
-          setPosts(postsData.data)
+          setPosts(prev => currentPage === 1 ? postsData.data : [...prev, ...postsData.data])
           setTotalPages(postsData.pagination.totalPages)
         }
       } catch (error) {
