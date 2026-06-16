@@ -8,6 +8,8 @@ import Hero from '../../components/Hero/Hero'
 import Footer from '../../components/Footer/Footer'
 import Pagination from '../../components/Pagination/Pagination'
 import { useTranslation } from "react-i18next";
+import { getClients } from '../../Services/clientService'
+
 import './Home.css'
 
 
@@ -36,6 +38,14 @@ function Home() {
     fetchCategories()
   }, [])
 
+ useEffect(() => {
+  const fetchClients = async () => {
+    const data = await getClients()
+    console.log("Clients from Backend-2:", data)
+  }
+  fetchClients()
+}, [])
+
   useEffect(() => {
   const handleScroll = () => {
     if (
@@ -62,7 +72,7 @@ useEffect(() => {
     }
   }
 
-  updateHeroMargin(); // pehle ek baar run karo
+  updateHeroMargin(); 
   window.addEventListener('resize', updateHeroMargin); // resize pe bhi run karo
   return () => window.removeEventListener('resize', updateHeroMargin);
 }, [])
