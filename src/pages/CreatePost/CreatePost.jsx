@@ -16,6 +16,7 @@ function CreatePost() {
 
   });
 
+
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
   const [categoriesLoading, setCategoriesLoading] = useState(true);
@@ -80,17 +81,25 @@ function CreatePost() {
     e.preventDefault();
     try {
       setLoading(true);
+
+        const token = getTokenFromCookie();
+
+      const decodedToken = JSON.parse(atob(token.split('.')[1])); 
+      const userId = decodedToken.userId;
+
+      console.log("DECODED TOKEN =>", decodedToken);
+      console.log("USER ID =>", userId); 
+
       const form = new FormData();
       form.append( 'title_en',formData.title_en );
       form.append('content_en',formData.content_en );
       form.append('category_id',formData.category_id );
-      form.append('AuthorId',formData.AuthorId);
+      form.append('AuthorId',userId);
 
       if (formData.image) {
         form.append('image',formData.image);
       }
 
-      const token = getTokenFromCookie();
       console.log( "TOKEN =>", token);
       // API Call
       const response = await fetch(
@@ -238,7 +247,7 @@ function CreatePost() {
 
                 </select>
               </div>
-              <div className="form-group">
+              {/* <div className="form-group">
                 <label>
                   {t("authorId")}
                 </label>
@@ -252,7 +261,7 @@ function CreatePost() {
                   required
                 />
 
-              </div>
+              </div> */}
 
             </div>
 
@@ -296,4 +305,5 @@ function CreatePost() {
     </>
   );
 }
+
 export default CreatePost;
