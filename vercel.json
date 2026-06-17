@@ -1,6 +1,14 @@
 {
   "rewrites": [
     {
+      "source": "/api/clients/:path*",
+      "destination": "https://blog-application-backend-2.vercel.app/api/clients/:path*"
+    },
+    {
+      "source": "/api/:path*",
+      "destination": "https://blog-application-backend-eight.vercel.app/api/:path*"
+    },
+    {
       "source": "/(.*)",
       "destination": "/"
     }

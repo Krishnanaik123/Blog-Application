@@ -2,8 +2,11 @@ import axios from 'axios'
 import { getTokenFromCookie } from '../utils/auth'
 
 const API = axios.create({
+
+  //baseURL: import.meta.env.DEV ? 'http://localhost:5000/api' : '/api',
   // baseURL: 'http://localhost:5000/api',
-    baseURL: 'https://blog-application-backend-eight.vercel.app/api',
+   // baseURL: 'https://blog-application-backend-eight.vercel.app/api',
+  baseURL: '/api',
   withCredentials: true
 })
 
